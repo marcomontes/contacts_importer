@@ -1,5 +1,6 @@
 require 'csv'
 require 'open-uri'
+require 'bcrypt'
 
 class ContactCreator < ApplicationService
   attr_reader :csv_file
@@ -58,6 +59,6 @@ class ContactCreator < ApplicationService
   end
 
   def encrypted_credit_card(cc)
-    "xyz"
+    BCrypt::Password.create(cc)
   end
 end
