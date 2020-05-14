@@ -1,17 +1,20 @@
 class CsvFile < ApplicationRecord
   belongs_to :user
-  has_many   :contacts
-
+  has_many :contacts
   has_one_attached :contacts_file
 
+  after_create :create_contacts
 
   def contacts_file_url
-    if self.contacts_file.attachment
-      self.contacts_file.attachment.service_url
-    end
+    contacts_file.attachment.service_url if contacts_file.attachment
   end
 
   def contacts_file_name
-    self.contacts_file.filename.to_s
+    contacts_file.filename.to_s
   end
+
+  private
+    def create_contacts
+      ContactCreator.call(self)
+    end
 end

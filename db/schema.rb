@@ -13,6 +13,7 @@
 ActiveRecord::Schema.define(version: 2020_05_14_161155) do
 
   # These are extensions that must be enabled in order to support this database
+  enable_extension "hstore"
   enable_extension "plpgsql"
 
   create_table "active_storage_attachments", force: :cascade do |t|
@@ -53,6 +54,7 @@ ActiveRecord::Schema.define(version: 2020_05_14_161155) do
 
   create_table "csv_files", force: :cascade do |t|
     t.string "aasm_state"
+    t.hstore "columns", default: {}, null: false
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

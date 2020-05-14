@@ -19,8 +19,7 @@ class CsvFilesController < ApplicationController
   end
 
   private
-    # Only allow a list of trusted parameters through.
     def csv_file_params
-      params.require(:csv_file).permit(:contacts_file)
+      params.require(:csv_file).permit(:contacts_file, columns: {})
     end
 end
