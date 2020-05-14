@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Contacts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Csv file</th>
+      <th>Name</th>
+      <th>Birthdate</th>
+      <th>Phone</th>
+      <th>Address</th>
+      <th>Cc franchise</th>
+      <th>Cc number</th>
+      <th>Cc last four</th>
+      <th>Email</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @contacts.each do |contact| %>
+      <tr>
+        <td><%= contact.csv_file %></td>
+        <td><%= contact.name %></td>
+        <td><%= contact.birthdate %></td>
+        <td><%= contact.phone %></td>
+        <td><%= contact.address %></td>
+        <td><%= contact.cc_franchise %></td>
+        <td><%= contact.cc_number %></td>
+        <td><%= contact.cc_last_four %></td>
+        <td><%= contact.email %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>

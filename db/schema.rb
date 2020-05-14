@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_14_153133) do
+ActiveRecord::Schema.define(version: 2020_05_14_161155) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,29 @@ ActiveRecord::Schema.define(version: 2020_05_14_153133) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "contacts", force: :cascade do |t|
+    t.bigint "csv_file_id"
+    t.string "name"
+    t.date "birthdate"
+    t.string "phone"
+    t.string "address"
+    t.string "cc_franchise"
+    t.string "cc_number"
+    t.integer "cc_last_four"
+    t.string "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["csv_file_id"], name: "index_contacts_on_csv_file_id"
+  end
+
+  create_table "csv_files", force: :cascade do |t|
+    t.string "aasm_state"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_csv_files_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -49,4 +72,6 @@ ActiveRecord::Schema.define(version: 2020_05_14_153133) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "contacts", "csv_files"
+  add_foreign_key "csv_files", "users"
 end

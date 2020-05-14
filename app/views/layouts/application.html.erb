@@ -12,6 +12,12 @@
   <body>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
+    <p>
+      <%= current_user.email %>
+    </p>
+    <%= link_to 'CSV Files', csv_files_url %>
+    <%= link_to 'Import new CSV File', new_csv_file_url %>
+    <%= link_to 'View Contacts', contacts_url %>
     <%= yield %>
   </body>
 </html>

@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Csv Files</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>CSV File</th>
+      <th>State</th>
+      <th>Date</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @csv_files.each do |csv_file| %>
+      <tr>
+        <td><%= link_to csv_file.contacts_file_name, csv_file.contacts_file_url %></td>
+        <td><%= csv_file.aasm_state %></td>
+        <td><%= csv_file.created_at %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Import New Csv File', new_csv_file_path %>
