@@ -16,7 +16,6 @@ class ContactCreator < ApplicationService
     contact_objects = []
 
     contacts_data.each do |c|
-      
       name      = identify_column(@columns["name"])
       birthdate = identify_column(@columns["birthdate"])
       phone     = identify_column(@columns["phone"])
@@ -48,7 +47,10 @@ class ContactCreator < ApplicationService
   end
 
   def find_cc_franchise(cc_number)
-    'VISA'
+    # CC_TYPES defined in config/initializers/credit_card_types.rb
+    brand = :unknown
+    CC_TYPES.each{|k,v| brand = k if cc_number =~ v }
+    return brand.upcase
   end
 
   def cc_last_four(credit_card)
@@ -59,13 +61,3 @@ class ContactCreator < ApplicationService
     "xyz"
   end
 end
-
-
-#require 'csv'
-#require 'open-uri'
-
-#csv_content = open(file.contacts_file_url)
-#contacts = CSV.parse(csv_content, headers: false)
-
-
-# Contact.create(name: c[0], birthdate: c[1], phone: c[2], address: c[3], cc_franchise: 'VISA', cc_number: c[4], cc_last_four: c[4].last(2), email: c[5],csv_file: csv_file)
