@@ -3,7 +3,7 @@ class CreateContacts < ActiveRecord::Migration[5.2]
     create_table :contacts do |t|
       t.references :csv_file, foreign_key: true
       t.string  :name
-      t.date    :birthdate
+      t.string  :birthdate
       t.string  :phone
       t.string  :address
       t.string  :cc_franchise

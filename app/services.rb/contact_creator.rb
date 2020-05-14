@@ -40,13 +40,13 @@ class ContactCreator < ApplicationService
         cc_number:    cc_crypt,
         cc_last_four: cc_nums
       )
+    end
 
-      contact_objects.each do |c_obj|
-        if c_obj.valid?
-          valid_contact_objs << c_obj
-        else
-          invalid_contact_objs << c_obj.attributes.merge(error_msgs: c_obj.errors.full_messages)
-        end
+    contact_objects.each do |c_obj|
+      if c_obj.valid?
+        valid_contact_objs << c_obj
+      else
+        invalid_contact_objs << c_obj.attributes.merge(error_msgs: c_obj.errors.full_messages)
       end
     end
     
