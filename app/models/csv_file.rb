@@ -1,6 +1,7 @@
 class CsvFile < ApplicationRecord
   belongs_to :user
   has_many :contacts
+  has_many :invalid_contacts
   has_one_attached :contacts_file
 
   after_create :create_contacts

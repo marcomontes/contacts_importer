@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_14_161155) do
+ActiveRecord::Schema.define(version: 2020_05_14_223827) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
@@ -61,6 +61,22 @@ ActiveRecord::Schema.define(version: 2020_05_14_161155) do
     t.index ["user_id"], name: "index_csv_files_on_user_id"
   end
 
+  create_table "invalid_contacts", force: :cascade do |t|
+    t.bigint "csv_file_id"
+    t.string "name"
+    t.date "birthdate"
+    t.string "phone"
+    t.string "address"
+    t.string "cc_franchise"
+    t.string "cc_number"
+    t.integer "cc_last_four"
+    t.string "email"
+    t.text "error_msgs", default: [], array: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["csv_file_id"], name: "index_invalid_contacts_on_csv_file_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -76,4 +92,5 @@ ActiveRecord::Schema.define(version: 2020_05_14_161155) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "contacts", "csv_files"
   add_foreign_key "csv_files", "users"
+  add_foreign_key "invalid_contacts", "csv_files"
 end

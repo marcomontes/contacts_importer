@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Invalid Contacts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Birthdate</th>
+      <th>Phone</th>
+      <th>Address</th>
+      <th>Cc franchise</th>
+      <th>Cc number</th>
+      <th>Cc last four</th>
+      <th>Email</th>
+      <th>Errors</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @invalid_contacts.each do |invalid_contact| %>
+      <tr>
+        <td><%= invalid_contact.name %></td>
+        <td><%= invalid_contact.birthdate %></td>
+        <td><%= invalid_contact.phone %></td>
+        <td><%= invalid_contact.address %></td>
+        <td><%= invalid_contact.cc_franchise %></td>
+        <td><%= invalid_contact.cc_number %></td>
+        <td><%= invalid_contact.cc_last_four %></td>
+        <td><%= invalid_contact.email %></td>
+        <td><%= invalid_contact.error_msgs.join(', ') %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -14,7 +14,10 @@ class ContactCreator < ApplicationService
   def call
     csv_content     = open(@file_url)
     contacts_data   = CSV.parse(csv_content, headers: false)
-    contact_objects = []
+    
+    contact_objects      = []
+    valid_contact_objs   = []
+    invalid_contact_objs = []
 
     contacts_data.each do |c|
       name      = identify_column(@columns["name"])
@@ -37,8 +40,18 @@ class ContactCreator < ApplicationService
         cc_number:    cc_crypt,
         cc_last_four: cc_nums
       )
+
+      contact_objects.each do |c_obj|
+        if c_obj.valid?
+          valid_contact_objs << c_obj
+        else
+          invalid_contact_objs << c_obj.attributes.merge(error_msgs: c_obj.errors.full_messages)
+        end
+      end
     end
-    Contact.import! contact_objects
+    
+    Contact.import valid_contact_objs
+    InvalidContact.import invalid_contact_objs
   end
 
   def identify_column(letter)
