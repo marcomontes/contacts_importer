@@ -1,6 +1,9 @@
 test:
-  service: Disk
-  root: <%= Rails.root.join("tmp/storage") %>
+  service: S3
+  access_key_id: AKIAIY3KFQ4AZE77TMAQ
+  secret_access_key: 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
+  region: us-east-1
+  bucket: csv-contacts-files-test
 
 local:
   service: Disk

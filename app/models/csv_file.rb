@@ -5,6 +5,8 @@ class CsvFile < ApplicationRecord
   has_many :contacts
   has_many :invalid_contacts
   has_one_attached :contacts_file
+  
+  validates :contacts_file, presence: true
 
   after_create :create_contacts
   after_create :set_final_states
