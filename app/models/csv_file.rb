@@ -44,7 +44,7 @@ class CsvFile < ApplicationRecord
 
     def set_final_states
       self.reload
-      self.not_processed! if self.may_not_processed? && self.invalid_contacts.count >= 1 
-      self.processed!     if self.may_processed? && self.contacts.count >= 1 
+      self.processed!     if self.may_processed? && self.contacts.count >= 1
+      self.not_processed! if self.may_not_processed? && self.invalid_contacts.count >= 1
     end
 end

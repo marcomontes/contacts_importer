@@ -1,9 +1,11 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col-sm">
+    <h3>CSV Files (Stored in AWS S3)</h3>
+  </div>
+</div>
 
-<h1>Csv Files (Stored in AWS S3)</h1>
-
-<table>
-  <thead>
+<table class="table">
+  <thead class="thead-dark">
     <tr>
       <th>CSV File</th>
       <th>State</th>
@@ -15,7 +17,7 @@
     <% @csv_files.each do |csv_file| %>
       <tr>
         <td><%= link_to csv_file.contacts_file_name, csv_file.contacts_file_url %></td>
-        <td><%= csv_file.aasm_state %></td>
+        <td><%= csv_file.aasm_state.upcase %></td>
         <td><%= csv_file.created_at %></td>
       </tr>
     <% end %>

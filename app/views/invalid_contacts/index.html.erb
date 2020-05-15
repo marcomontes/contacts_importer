@@ -1,37 +1,51 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col-sm">
+    <h3>INVALID CONTACTS</h3>
+  </div>
+</div>
 
-<h1>Invalid Contacts</h1>
-
-<table>
-  <thead>
+<table class="table">
+  <thead class="thead-dark">
     <tr>
-      <th>Name</th>
-      <th>Birthdate</th>
-      <th>Phone</th>
-      <th>Address</th>
-      <th>Cc franchise</th>
-      <th>Cc number</th>
-      <th>Cc last four</th>
-      <th>Email</th>
-      <th>Errors</th>
+      <th>DATA</th>
+      <th>ERRORS</th>
     </tr>
   </thead>
 
   <tbody>
-    <% @invalid_contacts.each do |invalid_contact| %>
+    <% @invalid_contacts.each do |ic| %>
       <tr>
-        <td><%= invalid_contact.name %></td>
-        <td><%= invalid_contact.birthdate_str %></td>
-        <td><%= invalid_contact.phone %></td>
-        <td><%= invalid_contact.address %></td>
-        <td><%= invalid_contact.cc_franchise %></td>
-        <td><%= invalid_contact.cc_number %></td>
-        <td><%= invalid_contact.cc_last_four %></td>
-        <td><%= invalid_contact.email %></td>
+        <td>
+          <small>
+            <strong>Name:</strong>
+            <%= ic.name %>
+            <br />
+            <strong>Birthdate:</strong>
+            <%= ic.birthdate_str %>
+            <br />
+            <strong>Phone:</strong>
+            <%= ic.phone %>
+            <br />
+            <strong>Address:</strong>
+            <%= ic.address %>
+            <br />
+            <strong>Credic Card:</strong>
+            <%= ic.cc_last_four %>
+            <br />
+            <strong>CC Franchise:</strong>
+            <%= ic.cc_franchise %>
+            <br />
+            <strong>CC Hash:</strong>
+            <%= ic.cc_number %>          
+            <br />
+            <strong>Email:</strong>
+            <%= ic.email %>
+          </small>
+        </td>
         <td>
           <ul>
-            <% invalid_contact.error_msgs.each do |msg| %>
-              <li><%= msg %></li>
+            <% ic.error_msgs.each do |msg| %>
+              <li><small><%= msg %></small></li>
             <% end %>
           </ul>
         </td>

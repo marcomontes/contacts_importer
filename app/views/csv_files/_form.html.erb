@@ -11,42 +11,59 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label 'CSV File with Contacts' %>
-    <%= form.file_field :contacts_file, required: true %>
+  <div class="form-group row">
+    <%= form.label 'CSV File with Contacts', class: "col-sm-2 col-form-label" %>
+    <div class="col-sm-10">
+      <%= form.file_field :contacts_file, required: true %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label 'CSV Name Column' %>
-    <%= form.select 'columns[name]', sheet_columns, { selected: sheet_columns[0] }, { class: 'form-control' }  %>
+  <div class="form-group row">
+    <%= form.label 'CSV Name Column', class: "col-sm-2 col-form-label" %>
+    <div class="col-sm-10">
+      <%= form.select 'columns[name]', sheet_columns, { selected: sheet_columns[0] }, { class: 'form-control' }  %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label 'CSV Birthdate Column' %>
-    <%= form.select 'columns[birthdate]', sheet_columns, { selected: sheet_columns[1] }, { class: 'form-control' }  %>
+  <div class="form-group row">
+    <%= form.label 'CSV Birthdate Column', class: "col-sm-2 col-form-label" %>
+    <div class="col-sm-10">
+      <%= form.select 'columns[birthdate]', sheet_columns, { selected: sheet_columns[1] }, { class: 'form-control' }  %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label 'CSV Phone Column' %>
-    <%= form.select 'columns[phone]', sheet_columns, { selected: sheet_columns[2] }, { class: 'form-control' }  %>
+  <div class="form-group row">
+    <%= form.label 'CSV Phone Column', class: "col-sm-2 col-form-label" %>
+    <div class="col-sm-10">
+      <%= form.select 'columns[phone]', sheet_columns, { selected: sheet_columns[2] }, { class: 'form-control' }  %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label 'CSV Address Column' %>
-    <%= form.select 'columns[address]', sheet_columns, { selected: sheet_columns[3] }, { class: 'form-control' }  %>
+  <div class="form-group row">
+    <%= form.label 'CSV Address Column', class: "col-sm-2 col-form-label" %>
+    <div class="col-sm-10">
+      <%= form.select 'columns[address]', sheet_columns, { selected: sheet_columns[3] }, { class: 'form-control' }  %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label 'CSV Credit Card Column' %>
-    <%= form.select 'columns[cc]', sheet_columns, { selected: sheet_columns[4] }, { class: 'form-control' }  %>
+  <div class="form-group row">
+    <%= form.label 'CSV Credit Card Column', class: "col-sm-2 col-form-label" %>
+    <div class="col-sm-10">
+      <%= form.select 'columns[cc]', sheet_columns, { selected: sheet_columns[4] }, { class: 'form-control' }  %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label 'CSV Email Column' %>
-    <%= form.select 'columns[email]', sheet_columns, { selected: sheet_columns[5] }, { class: 'form-control' }  %>
+  <div class="form-group row">
+    <%= form.label 'CSV Email Column', class: "col-sm-2 col-form-label" %>
+    <div class="col-sm-10">
+      <%= form.select 'columns[email]', sheet_columns, { selected: sheet_columns[5] }, { class: 'form-control' }  %>
+    </div>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="form-group row">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-10">
+      <%= form.submit "SAVE", class: "btn btn-success" %>
+    </div>
   </div>
 <% end %>

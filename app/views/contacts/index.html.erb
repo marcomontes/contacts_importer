@@ -1,32 +1,50 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col-sm">
+    <h3>CONTACTS</h3>
+  </div>
+</div>
 
-<h1>Contacts</h1>
-
-<table>
-  <thead>
+<table class="table">
+  <thead class="thead-dark">
     <tr>
-      <th>Name</th>
-      <th>Birthdate</th>
-      <th>Phone</th>
-      <th>Address</th>
-      <th>Cc franchise</th>
-      <th>Cc number</th>
-      <th>Cc last four</th>
-      <th>Email</th>
+      <th>DATA</th>
+      <th>CREDIT CARD</th>
     </tr>
   </thead>
 
   <tbody>
     <% @contacts.each do |c| %>
       <tr>
-        <td><%= c.name %></td>
-        <td><%= format_date(c.birthdate) %></td>
-        <td><%= c.phone %></td>
-        <td><%= c.address %></td>
-        <td><%= c.cc_franchise %></td>
-        <td><%= c.cc_number %></td>
-        <td><%= c.cc_last_four %></td>
-        <td><%= c.email %></td>
+        <td>
+          <small>
+            <strong>Name:</strong>
+            <%= c.name %>
+            <br />
+            <strong>Birthdate:</strong>
+            <%= format_date(c.birthdate) %>
+            <br />
+            <strong>Phone:</strong>
+            <%= c.phone %>
+            <br />
+            <strong>Address:</strong>
+            <%= c.address %>
+            <br />
+            <strong>Email:</strong>
+            <%= c.email %>
+          </small>
+        </td>
+        <td>
+          <small>
+            <strong>Credic Card:</strong>
+            <%= c.cc_last_four %>
+            <br />
+            <strong>CC Franchise:</strong>
+            <%= c.cc_franchise %>
+            <br />
+            <strong>CC Hash:</strong>
+            <%= c.cc_number %>
+          </small>
+        </td>
       </tr>
     <% end %>
   </tbody>
