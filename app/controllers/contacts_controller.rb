@@ -1,7 +1,7 @@
 class ContactsController < ApplicationController
 
   def index
-    @contacts = Contact.all.page params[:page]
+    @contacts = current_user.contacts.page params[:page]
   end
 
 end

@@ -38,7 +38,8 @@ class ContactCreator < ApplicationService
         email:         c[email],
         cc_franchise:  franchise,
         cc_number:     cc_crypt,
-        cc_last_four:  cc_nums
+        cc_last_four:  cc_nums,
+        user:          @csv_file.user
       )
     end
 
@@ -50,7 +51,7 @@ class ContactCreator < ApplicationService
       end
     end
     
-    Contact.import valid_contact_objs
+    Contact.import valid_contact_objs, validate_uniqueness: true
     InvalidContact.import invalid_contact_objs
   end
 

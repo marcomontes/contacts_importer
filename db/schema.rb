@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 2020_05_14_223827) do
 
   create_table "contacts", force: :cascade do |t|
     t.bigint "csv_file_id"
+    t.bigint "user_id"
     t.string "name"
     t.string "birthdate_str"
     t.date "birthdate"
@@ -51,6 +52,7 @@ ActiveRecord::Schema.define(version: 2020_05_14_223827) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["csv_file_id"], name: "index_contacts_on_csv_file_id"
+    t.index ["user_id"], name: "index_contacts_on_user_id"
   end
 
   create_table "csv_files", force: :cascade do |t|
@@ -64,6 +66,7 @@ ActiveRecord::Schema.define(version: 2020_05_14_223827) do
 
   create_table "invalid_contacts", force: :cascade do |t|
     t.bigint "csv_file_id"
+    t.bigint "user_id"
     t.string "name"
     t.string "birthdate_str"
     t.string "phone"
@@ -76,6 +79,7 @@ ActiveRecord::Schema.define(version: 2020_05_14_223827) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["csv_file_id"], name: "index_invalid_contacts_on_csv_file_id"
+    t.index ["user_id"], name: "index_invalid_contacts_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -92,6 +96,8 @@ ActiveRecord::Schema.define(version: 2020_05_14_223827) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "contacts", "csv_files"
+  add_foreign_key "contacts", "users"
   add_foreign_key "csv_files", "users"
   add_foreign_key "invalid_contacts", "csv_files"
+  add_foreign_key "invalid_contacts", "users"
 end

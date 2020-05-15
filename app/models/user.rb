@@ -5,5 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :csv_files
-  has_many :contacts, through: :csv_files
+  has_many :contacts
+  has_many :invalid_contacts
 end

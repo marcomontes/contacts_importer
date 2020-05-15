@@ -2,6 +2,7 @@ class CreateContacts < ActiveRecord::Migration[5.2]
   def change
     create_table :contacts do |t|
       t.references :csv_file, foreign_key: true
+      t.references :user, foreign_key: true
       t.string  :name
       t.string  :birthdate_str
       t.date    :birthdate
@@ -14,5 +15,7 @@ class CreateContacts < ActiveRecord::Migration[5.2]
 
       t.timestamps
     end
+
+    #add_index :contacts, [:email, :user_id], unique: true
   end
 end
