@@ -65,14 +65,29 @@ class ContactCreator < ApplicationService
     # CC_TYPES defined in config/initializers/credit_card_types.rb
     brand = :unknown
     CC_TYPES.each{|k,v| brand = k if cc_number =~ v }
-    return brand.upcase
+    return brand
   end
 
-  def cc_last_four(credit_card)
-    credit_card.to_s.last(4)
+  def cc_last_four(cc_number)
+    cc_number.to_s.last(4)
   end
 
-  def encrypted_credit_card(cc)
-    BCrypt::Password.create(cc)
+  def encrypted_credit_card(cc_number)
+    generate_encryption = case find_cc_franchise(cc_number)
+      when :dinners
+        true if cc_number.length == 14
+      when :amex
+        true if cc_number.length == 15
+      when :visa
+        true if [13,16].include?(cc_number.length)
+      when :mastercard
+        true if cc_number.length == 16
+      when :discover
+        true if cc_number.length == 16
+      else
+        false
+      end
+
+     generate_encryption ? BCrypt::Password.create(cc_number) : 'invalid'
   end
 end
