@@ -17,16 +17,16 @@
   </thead>
 
   <tbody>
-    <% @contacts.each do |contact| %>
+    <% @contacts.each do |c| %>
       <tr>
-        <td><%= contact.name %></td>
-        <td><%= contact.birthdate %></td>
-        <td><%= contact.phone %></td>
-        <td><%= contact.address %></td>
-        <td><%= contact.cc_franchise %></td>
-        <td><%= contact.cc_number %></td>
-        <td><%= contact.cc_last_four %></td>
-        <td><%= contact.email %></td>
+        <td><%= c.name %></td>
+        <td><%= format_date(c.birthdate) %></td>
+        <td><%= c.phone %></td>
+        <td><%= c.address %></td>
+        <td><%= c.cc_franchise %></td>
+        <td><%= c.cc_number %></td>
+        <td><%= c.cc_last_four %></td>
+        <td><%= c.email %></td>
       </tr>
     <% end %>
   </tbody>

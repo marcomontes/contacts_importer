@@ -40,7 +40,8 @@ ActiveRecord::Schema.define(version: 2020_05_14_223827) do
   create_table "contacts", force: :cascade do |t|
     t.bigint "csv_file_id"
     t.string "name"
-    t.string "birthdate"
+    t.string "birthdate_str"
+    t.date "birthdate"
     t.string "phone"
     t.string "address"
     t.string "cc_franchise"
@@ -64,7 +65,7 @@ ActiveRecord::Schema.define(version: 2020_05_14_223827) do
   create_table "invalid_contacts", force: :cascade do |t|
     t.bigint "csv_file_id"
     t.string "name"
-    t.string "birthdate"
+    t.string "birthdate_str"
     t.string "phone"
     t.string "address"
     t.string "cc_franchise"

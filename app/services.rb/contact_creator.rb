@@ -31,14 +31,14 @@ class ContactCreator < ApplicationService
       cc_nums   = cc_last_four(cc)
 
       contact_objects << @csv_file.contacts.new(
-        name:         c[name],
-        birthdate:    c[birthdate],
-        phone:        c[phone],
-        address:      c[address],
-        email:        c[email],
-        cc_franchise: franchise,
-        cc_number:    cc_crypt,
-        cc_last_four: cc_nums
+        name:          c[name],
+        birthdate_str: c[birthdate],
+        phone:         c[phone],
+        address:       c[address],
+        email:         c[email],
+        cc_franchise:  franchise,
+        cc_number:     cc_crypt,
+        cc_last_four:  cc_nums
       )
     end
 
@@ -46,7 +46,7 @@ class ContactCreator < ApplicationService
       if c_obj.valid?
         valid_contact_objs << c_obj
       else
-        invalid_contact_objs << c_obj.attributes.merge(error_msgs: c_obj.errors.full_messages)
+        invalid_contact_objs << c_obj.attributes.except("id", "birthdate").merge(error_msgs: c_obj.errors.full_messages)
       end
     end
     

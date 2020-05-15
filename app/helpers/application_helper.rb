@@ -10,5 +10,9 @@ module ApplicationHelper
   def sheet_columns
     ('A'..'Z').map{|l| [l,l]}
   end
+
+  def format_date(date)
+    date.strftime("%Y %B %e") if date
+  end
 end
 
