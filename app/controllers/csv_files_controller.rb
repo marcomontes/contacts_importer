@@ -1,7 +1,7 @@
 class CsvFilesController < ApplicationController
 
   def index
-    @csv_files = CsvFile.all
+    @csv_files = current_user.csv_files.page params[:page]
   end
 
   def new

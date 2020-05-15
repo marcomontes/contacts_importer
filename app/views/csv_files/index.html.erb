@@ -21,7 +21,4 @@
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'Import New Csv File', new_csv_file_path %>
+<%= paginate @csv_files %>

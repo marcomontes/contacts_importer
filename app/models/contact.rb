@@ -12,11 +12,4 @@ class Contact < ApplicationRecord
   validates_with DateValidator, fields: [:birthdate_str]
   
   paginates_per 10
-
 end
-
-
-
- 
-
- 
