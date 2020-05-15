@@ -1,7 +1,7 @@
 test:
   service: S3
-  access_key_id: AKIAIY3KFQ4AZE77TMAQ
-  secret_access_key: 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
+  access_key_id: test
+  secret_access_key: test
   region: us-east-1
   bucket: csv-contacts-files-test
 
@@ -12,8 +12,8 @@ local:
 # Use rails credentials:edit to set the AWS secrets (as aws:access_key_id|secret_access_key)
 amazon:
   service: S3
-  access_key_id: AKIAIY3KFQ4AZE77TMAQ
-  secret_access_key: 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
+  access_key_id: test
+  secret_access_key: test
   region: us-east-1
   bucket: csv-contacts-files
 

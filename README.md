@@ -10,6 +10,8 @@
 ``bundle install``
 3. Setup postgres database connection using this file:
 ``config/database.yml``
+3. Setup active-storage - AWS S3 credentials using this file:
+``config/storage.yml``
 4. Create and migrate the database
 * ``rails db:create``
 * ``rails db:migrate``
