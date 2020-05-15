@@ -28,7 +28,13 @@
         <td><%= invalid_contact.cc_number %></td>
         <td><%= invalid_contact.cc_last_four %></td>
         <td><%= invalid_contact.email %></td>
-        <td><%= invalid_contact.error_msgs.join(', ') %></td>
+        <td>
+          <ul>
+            <% invalid_contact.error_msgs.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </td>
       </tr>
     <% end %>
   </tbody>
